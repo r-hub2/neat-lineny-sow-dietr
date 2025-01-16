@@ -10,10 +10,11 @@
 #' those of interest for them. We have implemented in this function a way to join the tables for use as well as filter based on life history stage (if necessary).
 #' @examples 
 #' \donttest{
-#' #Convert Fishbase Diet Data
-#' my.diets <- ConvertFishbaseDiet(ExcludeStage=NULL)
 #' #Convert Fishbase Diet Data and exclude juvenile and larval records
-#' my.diets <- ConvertFishbaseDiet(ExcludeStage=c("recruits/juv.","larvae"))
+#' my.diets <- try(ConvertFishbaseDiet(ExcludeStage=c("recruits/juv.","larvae")))
+#'   if (!"try-error" %in% class(my.diets)){
+#'     my.diets
+#'  }
 #' }
 #' @author Samuel Borstein
 #' @export

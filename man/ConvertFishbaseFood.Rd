@@ -23,9 +23,12 @@ This converts the data frame produced by rfishbase fooditem function into a usab
 \examples{
 \donttest{
 #Get rfishbase food item data for a few species
-my.food <- as.data.frame(rfishbase::fooditems(c("Lutjanus apodus","Epinephelus itajara")))
+my.food <- try(as.data.frame(rfishbase::fooditems(c("Lutjanus apodus","Epinephelus itajara"))))
+if (!"try-error" \%in\% class(my.food)) {
 #use the ConvertFishbaseFood function to format it for dietr and exclude recruits/juveniles
 cleaned.food <- ConvertFishbaseFood(FishBaseFood=my.food, ExcludeStage=c("larvae","recruits/juv."))
+cleaned.food
+}
 }
 }
 \author{
